@@ -45,6 +45,14 @@ public class LayerTransporter : MonoBehaviour
         if (connectedBlock != null)
         {
             Gizmos.color = Color.red;
+            if (connectedBlock.connectedBlock != null && connectedBlock.connectedBlock == this)
+            {
+                Gizmos.color = Color.green;
+            }
+            else if (connectedBlock.connectedBlock != null && connectedBlock.connectedBlock != this)
+            {
+                Gizmos.color = Color.blue;
+            }
             Gizmos.DrawLine(transform.position, connectedBlock.transform.position);
             Gizmos.DrawSphere(connectedBlock.transform.position, 0.2f);
         }
