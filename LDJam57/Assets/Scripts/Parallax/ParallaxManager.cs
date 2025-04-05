@@ -24,13 +24,13 @@ public class ParallaxManager : MonoBehaviour
     public void OnParallaxChangeToMid()
     {
         foreGround.SetParallaxLayer(GetParallaxLayers("fore"));
-        midGround.SetParallaxLayer(GetParallaxLayers("mid"));
+        midGround.SetParallaxLayer(GetParallaxLayers("mid"), "Ground");
         backGround.SetParallaxLayer(GetParallaxLayers("back"));
     }
 
     public void OnParallaxChangeToFore()
     {
-        foreGround.SetParallaxLayer(GetParallaxLayers("mid"));
+        foreGround.SetParallaxLayer(GetParallaxLayers("mid"), "Ground");
         midGround.SetParallaxLayer(GetParallaxLayers("back"));
         backGround.SetParallaxLayer(GetParallaxLayers("backback"));
     }
@@ -39,12 +39,11 @@ public class ParallaxManager : MonoBehaviour
     {
         foreGround.SetParallaxLayer(GetParallaxLayers("forefore"));
         midGround.SetParallaxLayer(GetParallaxLayers("fore"));
-        backGround.SetParallaxLayer(GetParallaxLayers("mid"));
+        backGround.SetParallaxLayer(GetParallaxLayers("mid"), "Ground");
     }
 
     public void OnJump(InputValue value)
     {
-        Debug.Log("Jump pressed");
         switch (currentState)
         {
             case ParallaxState.ForeGround:

@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
+    public float jumpForce = 5f;
+    public LayerMask groundLayer;
 
     private Vector2 movementInput;
     private Rigidbody2D rb;
@@ -28,6 +30,22 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
+    }
+
+    public void OnJump(InputValue value)
+    {
+        Debug.Log("Jump input received: " + value.isPressed);
+        if (IsGrounded() && value.isPressed)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        // Check if the player is grounded using a raycast or collider check
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, groundLayer);
+        return hit.collider != null;
     }
 
     private void FixedUpdate()

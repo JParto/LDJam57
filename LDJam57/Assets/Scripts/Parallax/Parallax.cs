@@ -26,9 +26,28 @@ public class Parallax : MonoBehaviour
         lastCameraPosition = cameraTransform.position;
     }
 
-    public void SetParallaxLayer(ParallaxLayerConfig config)
+    public void SetParallaxLayer(ParallaxLayerConfig config, string layerName = "Parallax")
     {
         parallaxMultiplier = config.parallaxMultiplier;
         GetComponentInChildren<Tilemap>().color = config.layerColor;
+
+        int layer = LayerMask.NameToLayer(layerName);
+        if (layer == -1)
+        {
+            Debug.LogError($"Layer '{layerName}' does not exist.");
+            return;
+        }
+
+        SetLayerRecursively(gameObject, layer);
+    }
+
+    public static void SetLayerRecursively(GameObject obj, int layer)
+    {
+        obj.layer = layer;
+
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, layer);
+        }
     }
 }
