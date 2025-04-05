@@ -6,17 +6,38 @@ public class LayerTransporter : MonoBehaviour
     [SerializeField] public LayerTransporter connectedBlock;
     [SerializeField] public ParallaxState parallaxLayer;
     private PlayerMovement playerMovement;
+    [SerializeField] private float maxDistance = 4f; // Minimum distance to trigger transport
+    private float distanceToConnectingBlock => Vector2.Distance(transform.position, connectedBlock.transform.position);
 
-    // void Start()
-    // {
-    //     if (layerTransporterManager == null)
-    //     {
-    //         Debug.LogError("LayerTransporterManager instance is null. Make sure it is assigned in the inspector.");
-    //     }
-    // }
+    private bool canTransport => distanceToConnectingBlock <= maxDistance;
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Color defaultColor = Color.black;
+    [SerializeField] private Color highlightColor = Color.green;
+
+    void Update()
+    {
+        if (canTransport)
+        {
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = highlightColor;
+            }
+        }
+        else
+        {
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = defaultColor;
+            }
+
+        }
+    }
 
     public void TriggerTransport()
     {
+        if (!canTransport) return;
+
         layerTransporterManager.TransportToLayer(connectedBlock);
     }
 
@@ -33,7 +54,7 @@ public class LayerTransporter : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         playerMovement = collision.GetComponent<PlayerMovement>();
-        if (playerMovement != null)
+        if (playerMovement != null && playerMovement.transporter == this)
         {
             // Debug.Log("Player Exited Trigger: " + collision.name);
             playerMovement.transporter = null;
