@@ -17,7 +17,7 @@ public class ParallaxManager : MonoBehaviour
 
     void Awake()
     {
-        if (!instance)
+        if (instance == null)
         {
             instance = this;
         }

@@ -14,7 +14,7 @@ public class LayerTransporterManager : MonoBehaviour
         if (!instance)
         {
             Debug.Log("LayerTransporterManager instance created.");
-            // instance = this;
+            instance = this;
         }
         else
         {
@@ -49,7 +49,7 @@ public class LayerTransporterManager : MonoBehaviour
         transportFinishedEventChannel.onEventRaised += EndTransport;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         Debug.Log("Destroying LayerTransporterManager instance.");
         transportFinishedEventChannel.onEventRaised -= EndTransport;

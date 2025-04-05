@@ -650,7 +650,6 @@ GameObject:
   - component: {fileID: 619667375}
   - component: {fileID: 619667374}
   - component: {fileID: 619667378}
-  - component: {fileID: 619667379}
   - component: {fileID: 619667380}
   m_Layer: 6
   m_Name: Player
@@ -786,22 +785,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &619667379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619667373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2ba13186a33194b8638a5c9ba8beae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallaxConfig: {fileID: 11400000, guid: 67813f49eed0515448814783095dce97, type: 2}
-  foreGround: {fileID: 206241330}
-  midGround: {fileID: 1336828690}
-  backGround: {fileID: 1477116842}
 --- !u!114 &619667380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3701,7 +3684,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 980179841821544931, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
       propertyPath: parallaxLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 980179841821544931, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
       propertyPath: connectedBlock
