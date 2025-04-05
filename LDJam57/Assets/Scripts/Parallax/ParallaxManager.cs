@@ -1,11 +1,11 @@
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ParallaxManager : MonoBehaviour
 {
     public static ParallaxManager instance;
     private ParallaxState currentState = ParallaxState.MidGround;
+    [SerializeField] private SO_ParallaxStateEventChannel parallaxStateEventChannel;
 
     [Header("Parallax Config")]
     [SerializeField] private ParallaxConfig parallaxConfig;
@@ -25,6 +25,21 @@ public class ParallaxManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+        if (parallaxConfig == null)
+        {
+            Debug.LogError("ParallaxConfig is not assigned in the inspector.");
+        }
+
+        if (foreGround == null || midGround == null || backGround == null)
+        {
+            Debug.LogError("One or more Parallax objects are not assigned in the inspector.");
+        }
+
+        OnParallaxChangeToMid();
     }
 
     public void OnParallaxChangeToMid()
@@ -58,7 +73,7 @@ public class ParallaxManager : MonoBehaviour
     public void ChangeParallaxLayer(ParallaxState state)
     {
         currentState = state;
-        Debug.Log($"Changing Parallax Layer to: {state}");
+        parallaxStateEventChannel.RaiseEvent(currentState);
         switch (state)
         {
             case ParallaxState.ForeGround:
@@ -71,12 +86,6 @@ public class ParallaxManager : MonoBehaviour
                 OnParallaxChangeToBack();
                 break;
         }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        OnParallaxChangeToMid();
     }
 
     private ParallaxLayerConfig GetParallaxLayers(string name)

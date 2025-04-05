@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LayerTransporter : MonoBehaviour
 {
-    public LayerTransporterManager layerTransporterManager;
+    private LayerTransporterManager layerTransporterManager => LayerTransporterManager.instance;
     [SerializeField] public LayerTransporter connectedBlock;
     [SerializeField] public ParallaxState parallaxLayer;
     private PlayerMovement playerMovement;
@@ -37,6 +37,16 @@ public class LayerTransporter : MonoBehaviour
         {
             // Debug.Log("Player Exited Trigger: " + collision.name);
             playerMovement.transporter = null;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (connectedBlock != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, connectedBlock.transform.position);
+            Gizmos.DrawSphere(connectedBlock.transform.position, 0.2f);
         }
     }
 }
