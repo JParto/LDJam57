@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movementInput;
     private Rigidbody2D rb;
 
+    public LayerTransporter transporter;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,9 +37,15 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump(InputValue value)
     {
         Debug.Log("Jump input received: " + value.isPressed);
-        if (IsGrounded() && value.isPressed)
+        if (IsGrounded() && value.isPressed && transporter == null)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+
+        else if (transporter != null && value.isPressed)
+        {
+            // Handle the jump input when the player is in a transporter
+            transporter.TriggerTransport();
         }
     }
 

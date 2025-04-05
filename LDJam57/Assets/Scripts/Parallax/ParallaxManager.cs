@@ -4,13 +4,6 @@ using UnityEngine.InputSystem;
 
 public class ParallaxManager : MonoBehaviour
 {
-    private enum ParallaxState
-    {
-        ForeGround,
-        MidGround,
-        BackGround
-    }
-
     private ParallaxState currentState = ParallaxState.MidGround;
 
     [Header("Parallax Config")]
@@ -42,21 +35,25 @@ public class ParallaxManager : MonoBehaviour
         backGround.SetParallaxLayer(GetParallaxLayers("mid"), "Ground");
     }
 
-    public void OnJump(InputValue value)
+    public void DisableParallax()
     {
-        switch (currentState)
+        foreGround.DisableParallax();
+        midGround.DisableParallax();
+        backGround.DisableParallax();
+    }
+
+    public void ChangeParallaxLayer(ParallaxState state)
+    {
+        switch (state)
         {
             case ParallaxState.ForeGround:
-                OnParallaxChangeToMid();
-                currentState = ParallaxState.MidGround;
+                OnParallaxChangeToFore();
                 break;
             case ParallaxState.MidGround:
-                OnParallaxChangeToBack();
-                currentState = ParallaxState.BackGround;
+                OnParallaxChangeToMid();
                 break;
             case ParallaxState.BackGround:
-                OnParallaxChangeToFore();
-                currentState = ParallaxState.ForeGround;
+                OnParallaxChangeToBack();
                 break;
         }
     }
@@ -70,11 +67,5 @@ public class ParallaxManager : MonoBehaviour
     private ParallaxLayerConfig GetParallaxLayers(string name)
     {
         return parallaxConfig.layers.First(x => x.layerName == name);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

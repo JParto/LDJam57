@@ -17,7 +17,7 @@ MonoBehaviour:
     parallaxMultiplier: 1
     layerColor: {r: 1, g: 1, b: 1, a: 1}
   - layerName: backback
-    parallaxMultiplier: 0.75
+    parallaxMultiplier: 1
     layerColor: {r: 0, g: 0.029711246, b: 1, a: 1}
   - layerName: back
     parallaxMultiplier: 0.5
@@ -29,5 +29,5 @@ MonoBehaviour:
     parallaxMultiplier: -0.5
     layerColor: {r: 1, g: 0.5251572, b: 0.5251572, a: 1}
   - layerName: forefore
-    parallaxMultiplier: -0.75
+    parallaxMultiplier: -1
     layerColor: {r: 1, g: 0, b: 0, a: 1}

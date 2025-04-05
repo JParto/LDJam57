@@ -41,6 +41,11 @@ public class Parallax : MonoBehaviour
         SetLayerRecursively(gameObject, layer);
     }
 
+    public void DisableParallax()
+    {
+        parallaxMultiplier = 0f;
+    }
+
     public static void SetLayerRecursively(GameObject obj, int layer)
     {
         obj.layer = layer;
