@@ -2,11 +2,24 @@ using UnityEngine;
 
 public class LayerTransporterManager : MonoBehaviour
 {
+    public static LayerTransporterManager instance;
     [SerializeField] private ParallaxManager parallaxManager;
     [SerializeField] private SO_PositionEventChannel transportToPositionEventChannel;
     [SerializeField] private SO_VoidEventChannel transportFinishedEventChannel;
 
     private ParallaxState toLayer;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void TransportToLayer(LayerTransporter toTransporter)
     {

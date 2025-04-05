@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class ParallaxManager : MonoBehaviour
 {
+    public static ParallaxManager instance;
     private ParallaxState currentState = ParallaxState.MidGround;
 
     [Header("Parallax Config")]
@@ -13,6 +14,18 @@ public class ParallaxManager : MonoBehaviour
     [SerializeField] private Parallax foreGround;
     [SerializeField] private Parallax midGround;
     [SerializeField] private Parallax backGround;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void OnParallaxChangeToMid()
     {
@@ -44,6 +57,7 @@ public class ParallaxManager : MonoBehaviour
 
     public void ChangeParallaxLayer(ParallaxState state)
     {
+        currentState = state;
         switch (state)
         {
             case ParallaxState.ForeGround:

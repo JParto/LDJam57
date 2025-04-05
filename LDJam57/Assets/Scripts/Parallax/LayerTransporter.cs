@@ -2,11 +2,23 @@ using UnityEngine;
 
 public class LayerTransporter : MonoBehaviour
 {
+    private LayerTransporterManager layerTransporterManager => LayerTransporterManager.instance;
+    private ParallaxManager parallaxManager => ParallaxManager.instance;
     [SerializeField] public LayerTransporter connectedBlock;
-    [SerializeField] private LayerTransporterManager layerTransporterManager;
-    [SerializeField] private ParallaxManager parallaxManager;
     [SerializeField] public ParallaxState parallaxLayer;
     private PlayerMovement playerMovement;
+
+    void Awake()
+    {
+        if (layerTransporterManager == null)
+        {
+            Debug.LogError("LayerTransporterManager instance is null. Make sure it is assigned in the inspector.");
+        }
+        if (parallaxManager == null)
+        {
+            Debug.LogError("ParallaxManager instance is null. Make sure it is assigned in the inspector.");
+        }
+    } 
 
     public void DisableParallax()
     {
