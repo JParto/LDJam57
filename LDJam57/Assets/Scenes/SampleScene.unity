@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transportToPositionEventChannel: {fileID: 11400000, guid: 04f2ca0e784e81d46b44082d9f64a7a4, type: 2}
-  transportFinishedEventChannel: {fileID: 11400000, guid: 281f8d898eceb024ba3720b9c1506cba, type: 2}
+  transportFinishedEventChannel: {fileID: 11400000, guid: c3d4f793a93e3f640a132c7d5c4f674e, type: 2}
   transportCurve:
     serializedVersion: 2
     m_Curve:
@@ -2752,9 +2752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdae0723c295ae846862ff7492e9aa6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxManager: {fileID: 1559071115}
   transportToPositionEventChannel: {fileID: 11400000, guid: 04f2ca0e784e81d46b44082d9f64a7a4, type: 2}
-  transportFinishedEventChannel: {fileID: 11400000, guid: 281f8d898eceb024ba3720b9c1506cba, type: 2}
+  transportFinishedEventChannel: {fileID: 11400000, guid: c3d4f793a93e3f640a132c7d5c4f674e, type: 2}
 --- !u!1 &1849539836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,7 +2875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transportToPositionEventChannel: {fileID: 11400000, guid: 04f2ca0e784e81d46b44082d9f64a7a4, type: 2}
-  transportFinishedEventChannel: {fileID: 11400000, guid: 281f8d898eceb024ba3720b9c1506cba, type: 2}
+  transportFinishedEventChannel: {fileID: 11400000, guid: c3d4f793a93e3f640a132c7d5c4f674e, type: 2}
   positionComposer: {fileID: 1849539839}
 --- !u!1 &1883404297
 GameObject:
@@ -3585,9 +3584,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1985385200}
     m_Modifications:
     - target: {fileID: 980179841821544931, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
+      propertyPath: parallaxLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980179841821544931, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 287165366}
+    - target: {fileID: 980179841821544931, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
+      propertyPath: layerTransporterManager
+      value: 
+      objectReference: {fileID: 1559071117}
     - target: {fileID: 4200732348560333158, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
       propertyPath: m_Name
       value: LayerTransporter
@@ -3693,6 +3700,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 635053878}
     m_Modifications:
     - target: {fileID: 980179841821544931, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
+      propertyPath: parallaxLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980179841821544931, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
       propertyPath: connectedBlock
       value: 
       objectReference: {fileID: 2010565965}
@@ -3714,7 +3725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8208136162473843705, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8208136162473843705, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
       propertyPath: m_LocalPosition.y

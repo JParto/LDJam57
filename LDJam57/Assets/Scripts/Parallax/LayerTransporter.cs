@@ -2,28 +2,18 @@ using UnityEngine;
 
 public class LayerTransporter : MonoBehaviour
 {
-    private LayerTransporterManager layerTransporterManager => LayerTransporterManager.instance;
-    private ParallaxManager parallaxManager => ParallaxManager.instance;
+    public LayerTransporterManager layerTransporterManager;
     [SerializeField] public LayerTransporter connectedBlock;
     [SerializeField] public ParallaxState parallaxLayer;
     private PlayerMovement playerMovement;
 
-    void Awake()
-    {
-        if (layerTransporterManager == null)
-        {
-            Debug.LogError("LayerTransporterManager instance is null. Make sure it is assigned in the inspector.");
-        }
-        if (parallaxManager == null)
-        {
-            Debug.LogError("ParallaxManager instance is null. Make sure it is assigned in the inspector.");
-        }
-    } 
-
-    public void DisableParallax()
-    {
-        parallaxManager.DisableParallax();
-    }
+    // void Start()
+    // {
+    //     if (layerTransporterManager == null)
+    //     {
+    //         Debug.LogError("LayerTransporterManager instance is null. Make sure it is assigned in the inspector.");
+    //     }
+    // }
 
     public void TriggerTransport()
     {
@@ -35,7 +25,7 @@ public class LayerTransporter : MonoBehaviour
         playerMovement = collision.GetComponent<PlayerMovement>();
         if (playerMovement != null)
         {
-            Debug.Log("Player Entered Trigger: " + collision.name);
+            // Debug.Log("Player Entered Trigger: " + collision.name);
             playerMovement.transporter = this;
         }
     }
@@ -45,7 +35,7 @@ public class LayerTransporter : MonoBehaviour
         playerMovement = collision.GetComponent<PlayerMovement>();
         if (playerMovement != null)
         {
-            Debug.Log("Player Exited Trigger: " + collision.name);
+            // Debug.Log("Player Exited Trigger: " + collision.name);
             playerMovement.transporter = null;
         }
     }

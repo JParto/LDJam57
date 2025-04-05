@@ -17,7 +17,7 @@ public class ParallaxManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+        if (!instance)
         {
             instance = this;
         }
@@ -58,6 +58,7 @@ public class ParallaxManager : MonoBehaviour
     public void ChangeParallaxLayer(ParallaxState state)
     {
         currentState = state;
+        Debug.Log($"Changing Parallax Layer to: {state}");
         switch (state)
         {
             case ParallaxState.ForeGround:

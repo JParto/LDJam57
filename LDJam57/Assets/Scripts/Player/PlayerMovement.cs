@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        Debug.Log("Jump input received: " + value.isPressed);
         if (IsGrounded() && value.isPressed && transporter == null)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);

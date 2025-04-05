@@ -3,7 +3,7 @@ using UnityEngine;
 public class LayerTransporterManager : MonoBehaviour
 {
     public static LayerTransporterManager instance;
-    [SerializeField] private ParallaxManager parallaxManager;
+    private ParallaxManager parallaxManager => ParallaxManager.instance;
     [SerializeField] private SO_PositionEventChannel transportToPositionEventChannel;
     [SerializeField] private SO_VoidEventChannel transportFinishedEventChannel;
 
@@ -11,18 +11,21 @@ public class LayerTransporterManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+        if (!instance)
         {
-            instance = this;
+            Debug.Log("LayerTransporterManager instance created.");
+            // instance = this;
         }
         else
         {
+            Debug.LogWarning("Multiple instances of LayerTransporterManager detected. Destroying the duplicate instance.");
             Destroy(gameObject);
         }
     }
 
     public void TransportToLayer(LayerTransporter toTransporter)
     {
+        Debug.Log($"Transporting to layer: {toTransporter.parallaxLayer}");
         // disable parallax
         parallaxManager.DisableParallax();
 
@@ -36,15 +39,19 @@ public class LayerTransporterManager : MonoBehaviour
     public void EndTransport()
     {
         // change and enable parallax 
+        Debug.Log($"Changing Parallax Layer to: {toLayer}");
         parallaxManager.ChangeParallaxLayer(toLayer);
     }
 
-    public void OnEnable()
+    private void OnEnable()
     {
+        Debug.Log("Enabling LayerTransporterManager instance.");
         transportFinishedEventChannel.onEventRaised += EndTransport;
     }
-    public void OnDestroy()
+
+    private void OnDestroy()
     {
+        Debug.Log("Destroying LayerTransporterManager instance.");
         transportFinishedEventChannel.onEventRaised -= EndTransport;
     }
 }
