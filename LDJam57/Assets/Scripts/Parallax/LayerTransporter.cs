@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class LayerTransporter : MonoBehaviour
@@ -18,6 +17,11 @@ public class LayerTransporter : MonoBehaviour
     [SerializeField] private Color defaultColor = Color.black;
     [SerializeField] private Color highlightColor = Color.green;
 
+    [SerializeField] private ParticleSystem activeParticleSystem;
+    private bool activeIsPlaying = false;
+    [SerializeField] private ParticleSystem inActiveParticleSystem;
+    private bool inActiveIsPlaying = false;
+
     [SerializeField] private SO_VoidEventChannel toStartTransportFinishedEventChannel;
     [SerializeField] private SO_ParallaxStateEventChannel toParallaxStateEventChannel;
     [SerializeField] private AudioCuePlayer audioCuePlayer;
@@ -30,12 +34,25 @@ public class LayerTransporter : MonoBehaviour
             {
                 spriteRenderer.color = highlightColor;
             }
+
+            if (!activeIsPlaying){
+                activeIsPlaying = true;
+                activeParticleSystem.Play();
+                inActiveIsPlaying = false;
+                inActiveParticleSystem.Stop();
+            }
         }
         else
         {
             if (spriteRenderer != null)
             {
                 spriteRenderer.color = defaultColor;
+            }
+            if (!inActiveIsPlaying){
+                activeIsPlaying = false;
+                activeParticleSystem.Stop();
+                inActiveIsPlaying = true;
+                inActiveParticleSystem.Play();
             }
 
         }
