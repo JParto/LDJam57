@@ -233,13 +233,20 @@ MonoBehaviour:
   _masterVolume: 1
   _musicVolume: 1
   _sfxVolume: 1
-  _music: {fileID: 0}
+  _midMusic: {fileID: 11400000, guid: 611eac226dc32fb4f9d49830182784dd, type: 2}
+  _backMusic: {fileID: 11400000, guid: ad7644f84adc0e94f9cdf9f282ba7c7a, type: 2}
+  _foreMusic: {fileID: 11400000, guid: a74d8ca59e67ef548b42f2c1ac4cf60e, type: 2}
   _pool: {fileID: 11400000, guid: c4071f3550dc3fe4bb599f6f478e7f20, type: 2}
   _initialPoolSize: 10
   _SFXEventChannel: {fileID: 11400000, guid: 41827648cbb71164ba0fed5a431a0605, type: 2}
   _SFXVolumeEventChannel: {fileID: 11400000, guid: 6e03cfde31b3d154a923ad88c9ff02c7, type: 2}
   _musicVolumeEventChannel: {fileID: 11400000, guid: 6e79e1937f562b045a12aab5b1215389, type: 2}
   _masterVolumeEventChannel: {fileID: 11400000, guid: 652b6653b3407fb488883815efa0bee0, type: 2}
+  _parallaxStateEventChannel: {fileID: 11400000, guid: 847fdb6564fd0a646be18430fdb8497c, type: 2}
+  _foreSnapShot: {fileID: 4146267752798645332, guid: bafd0e630eb0fde4980de5ca8db6af64, type: 2}
+  _midSnapShot: {fileID: -7661192061204565802, guid: bafd0e630eb0fde4980de5ca8db6af64, type: 2}
+  _backSnapShot: {fileID: -7848721156412879637, guid: bafd0e630eb0fde4980de5ca8db6af64, type: 2}
+  transitionDuration: 1.5
 --- !u!4 &72951912
 Transform:
   m_ObjectHideFlags: 0

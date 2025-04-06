@@ -19,6 +19,7 @@ public class LayerTransporter : MonoBehaviour
     [SerializeField] private Color highlightColor = Color.green;
 
     [SerializeField] private SO_VoidEventChannel toStartTransportFinishedEventChannel;
+    [SerializeField] private SO_ParallaxStateEventChannel toParallaxStateEventChannel;
     [SerializeField] private AudioCuePlayer audioCuePlayer;
 
     void Update()
@@ -51,6 +52,8 @@ public class LayerTransporter : MonoBehaviour
         }
 
         layerTransporterManager.TransportFromLayer(this);
+
+        toParallaxStateEventChannel.RaiseEvent(connectedBlock.parallaxLayer);
 
         toStartTransportFinishedEventChannel.onEventRaised += TriggerToLayerTransport;
     }

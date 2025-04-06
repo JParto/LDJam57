@@ -16,7 +16,9 @@ public class AudioManager : MonoBehaviour
 
     [Header("Music")]
     private SoundEmitter _musicEmitter;
-    [SerializeField] private SO_Sound _music;
+    [SerializeField] private SO_Sound _midMusic;
+    [SerializeField] private SO_Sound _backMusic;
+    [SerializeField] private SO_Sound _foreMusic;
 
 
     [Header("Sound Emitter Pool")]
@@ -34,6 +36,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private SO_FloatEventChannel _musicVolumeEventChannel = default;
     [Tooltip("The SoundManager listens to this event, fired by objects in any scene, to change Master volume")]
     [SerializeField] private SO_FloatEventChannel _masterVolumeEventChannel = default;
+    [SerializeField] private SO_ParallaxStateEventChannel _parallaxStateEventChannel = default;
+    [SerializeField] private AudioMixerSnapshot _foreSnapShot;
+    [SerializeField] private AudioMixerSnapshot _midSnapShot;
+    [SerializeField] private AudioMixerSnapshot _backSnapShot;
+
+    public float transitionDuration = 1.5f;
 
 
     private void Awake(){
@@ -47,8 +55,12 @@ public class AudioManager : MonoBehaviour
     }
 
     void Start(){
-        // if (_music != null)
-        //     PlayMusic(_music);
+        if (_midMusic != null && _foreMusic != null && _backMusic != null)
+        {
+            PlayMusic(_midMusic);
+            PlayMusic(_foreMusic);
+            PlayMusic(_backMusic);
+        }
     }
 
     private void OnEnable()
@@ -59,6 +71,7 @@ public class AudioManager : MonoBehaviour
         _musicVolumeEventChannel.onEventRaised += ChangeMusicVolume;
         _SFXVolumeEventChannel.onEventRaised += ChangeSFXVolume;
 
+        _parallaxStateEventChannel.onEventRaised += toSnapShot;
     }
 
     private void OnDestroy()
@@ -71,22 +84,40 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    private void toSnapShot(ParallaxState state)
+    {
+        switch (state)
+        {
+            case ParallaxState.ForeGround:
+                _foreSnapShot.TransitionTo(transitionDuration);
+                break;
+            case ParallaxState.MidGround:
+                _midSnapShot.TransitionTo(transitionDuration);
+                break;
+            case ParallaxState.BackGround:
+                _backSnapShot.TransitionTo(transitionDuration);
+                break;
+            default:
+                return;
+        }
+    }
+
     public void PlayMusic(SO_Sound music){
         _musicEmitter = _pool.Request();
 
         _musicEmitter.PlaySound(music, transform.position);
     }
 
-    public void PlayGlobalMusic(bool play){
-        if (play){
-            if (_musicEmitter == null)
-                _musicEmitter = _pool.Request();
+    // public void PlayGlobalMusic(bool play){
+    //     if (play){
+    //         if (_musicEmitter == null)
+    //             _musicEmitter = _pool.Request();
             
-            _musicEmitter.PlaySound(_music, transform.position);
-        } else {
-            _musicEmitter.Stop();
-        }
-    }
+    //         _musicEmitter.PlaySound(_music, transform.position);
+    //     } else {
+    //         _musicEmitter.Stop();
+    //     }
+    // }
 
     public SoundEmitter PlaySound(SO_Sound sound, Vector3 position = default){
         SoundEmitter emitter = _pool.Request();
