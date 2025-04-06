@@ -16,18 +16,30 @@ MonoBehaviour:
   - layerName: static
     parallaxMultiplier: 1
     layerColor: {r: 1, g: 1, b: 1, a: 1}
-  - layerName: backback
-    parallaxMultiplier: 1
+  - layerName: backback_back
+    parallaxMultiplier: 0
     layerColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-  - layerName: back
+  - layerName: back_back
     parallaxMultiplier: 0.5
     layerColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
-  - layerName: mid
+  - layerName: mid_back
+    parallaxMultiplier: 1
+    layerColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+  - layerName: back_mid
+    parallaxMultiplier: -0.5
+    layerColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
+  - layerName: mid_mid
     parallaxMultiplier: 0
     layerColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
-  - layerName: fore
+  - layerName: fore_mid
+    parallaxMultiplier: 0.5
+    layerColor: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
+  - layerName: mid_fore
+    parallaxMultiplier: -1
+    layerColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+  - layerName: fore_fore
     parallaxMultiplier: -0.5
     layerColor: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
-  - layerName: forefore
-    parallaxMultiplier: -1
+  - layerName: forefore_fore
+    parallaxMultiplier: 0
     layerColor: {r: 1, g: 1, b: 1, a: 1}

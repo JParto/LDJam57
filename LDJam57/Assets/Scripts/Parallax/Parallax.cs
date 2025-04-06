@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -29,7 +30,7 @@ public class Parallax : MonoBehaviour
     public void SetParallaxLayer(ParallaxLayerConfig config, string layerName = "Parallax")
     {
         parallaxMultiplier = config.parallaxMultiplier;
-        GetComponentInChildren<Tilemap>().color = config.layerColor;
+        Array.ForEach(GetComponentsInChildren<Tilemap>(), tilemap => tilemap.color = config.layerColor);
 
         int layer = LayerMask.NameToLayer(layerName);
         if (layer == -1)
