@@ -44,23 +44,23 @@ public class ParallaxManager : MonoBehaviour
 
     public void OnParallaxChangeToMid()
     {
-        foreGround.SetParallaxLayer(GetParallaxLayers("fore"));
-        midGround.SetParallaxLayer(GetParallaxLayers("mid"), "Ground");
-        backGround.SetParallaxLayer(GetParallaxLayers("back"));
+        foreGround.SetParallaxLayer(GetParallaxLayers("fore_fore"));
+        midGround.SetParallaxLayer(GetParallaxLayers("mid_mid"), "Ground");
+        backGround.SetParallaxLayer(GetParallaxLayers("back_back"));
     }
 
     public void OnParallaxChangeToFore()
     {
-        foreGround.SetParallaxLayer(GetParallaxLayers("mid"), "Ground");
-        midGround.SetParallaxLayer(GetParallaxLayers("back"));
-        backGround.SetParallaxLayer(GetParallaxLayers("backback"));
+        foreGround.SetParallaxLayer(GetParallaxLayers("forefore_fore"), "Ground");
+        midGround.SetParallaxLayer(GetParallaxLayers("fore_mid"));
+        backGround.SetParallaxLayer(GetParallaxLayers("mid_back"));
     }
 
     public void OnParallaxChangeToBack()
     {
-        foreGround.SetParallaxLayer(GetParallaxLayers("forefore"));
-        midGround.SetParallaxLayer(GetParallaxLayers("fore"));
-        backGround.SetParallaxLayer(GetParallaxLayers("mid"), "Ground");
+        foreGround.SetParallaxLayer(GetParallaxLayers("mid_fore"));
+        midGround.SetParallaxLayer(GetParallaxLayers("back_mid"));
+        backGround.SetParallaxLayer(GetParallaxLayers("backback_back"), "Ground");
     }
 
     public void DisableParallax()

@@ -19,7 +19,6 @@ public class PlayerLayerTransporter : MonoBehaviour
 
     private void Transport(Vector2 position)
     {
-        Debug.Log("Transporting to end position: " + position);
         // set to position
         startPosition = transform.position;
         targetPosition = position;
@@ -36,7 +35,6 @@ public class PlayerLayerTransporter : MonoBehaviour
 
     private void TransportFrom(Vector2 position)
     {
-        Debug.Log("Transporting to start position: " + position);
         // disable player movement / input
         GetComponent<PlayerMovement>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic; // Disable Rigidbody2D to prevent physics interactions
