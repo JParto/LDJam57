@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a707618ab21098d448c2ece00d01cc55, type: 3}
+  m_Name: LayerDown
+  m_EditorClassIdentifier: 
+  soundName: LayerDown
+  mixerGroup: {fileID: 2783387291211938160, guid: bafd0e630eb0fde4980de5ca8db6af64, type: 2}
+  clips:
+  - {fileID: 8300000, guid: 0a7f85d226b4f0f43a382b79d6ab34d7, type: 3}
+  volume: 1
+  pitch: 1
+  loop: 0

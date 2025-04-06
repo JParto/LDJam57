@@ -14,12 +14,10 @@ public class LayerTransporterManager : MonoBehaviour
     {
         if (!instance)
         {
-            Debug.Log("LayerTransporterManager instance created.");
             instance = this;
         }
         else
         {
-            Debug.LogWarning("Multiple instances of LayerTransporterManager detected. Destroying the duplicate instance.");
             Destroy(gameObject);
         }
     }
@@ -31,7 +29,6 @@ public class LayerTransporterManager : MonoBehaviour
 
     public void TransportToLayer(LayerTransporter toTransporter)
     {
-        Debug.Log($"Transporting to layer: {toTransporter.parallaxLayer}");
         // disable parallax
         parallaxManager.DisableParallax();
 
@@ -45,7 +42,6 @@ public class LayerTransporterManager : MonoBehaviour
     public void EndTransport()
     {
         // change and enable parallax 
-        Debug.Log($"Changing Parallax Layer to: {toLayer}");
         parallaxManager.ChangeParallaxLayer(toLayer);
     }
 

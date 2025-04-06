@@ -12,11 +12,14 @@ public class LayerTransporter : MonoBehaviour
 
     private bool canTransport => distanceToConnectingBlock <= maxDistance;
 
+    private bool toLowerLayer => parallaxLayer < connectedBlock.parallaxLayer;
+
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color defaultColor = Color.black;
     [SerializeField] private Color highlightColor = Color.green;
 
     [SerializeField] private SO_VoidEventChannel toStartTransportFinishedEventChannel;
+    [SerializeField] private AudioCuePlayer audioCuePlayer;
 
     void Update()
     {
@@ -40,6 +43,12 @@ public class LayerTransporter : MonoBehaviour
     public void TriggerTransport()
     {
         if (!canTransport) return;
+
+        if (toLowerLayer) {
+            audioCuePlayer.PlaySound("LayerDown");
+        } else {
+            audioCuePlayer.PlaySound("LayerUp");
+        }
 
         layerTransporterManager.TransportFromLayer(this);
 

@@ -75,7 +75,6 @@ public class PlayerLayerTransporter : MonoBehaviour
             toEnd = false;
             transform.position = targetPosition; // Ensure the player ends up at the target position
             transportFinishedEventChannel.RaiseEvent(); // Notify that the transport is finished
-            Debug.Log("Transport finished to: " + targetPosition);
             return;
         }
 
