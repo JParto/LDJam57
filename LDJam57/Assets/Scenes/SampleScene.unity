@@ -200,6 +200,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8208136162473843705, guid: 61b3bf03188e1264bb2f5995825437b5, type: 3}
   m_PrefabInstance: {fileID: 47481490}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &72951910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72951912}
+  - component: {fileID: 72951911}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &72951911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72951910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e4c784f569cde42af95e09f4558a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: bafd0e630eb0fde4980de5ca8db6af64, type: 2}
+  _masterVolume: 1
+  _musicVolume: 1
+  _sfxVolume: 1
+  _music: {fileID: 0}
+  _pool: {fileID: 11400000, guid: c4071f3550dc3fe4bb599f6f478e7f20, type: 2}
+  _initialPoolSize: 10
+  _SFXEventChannel: {fileID: 11400000, guid: 41827648cbb71164ba0fed5a431a0605, type: 2}
+  _SFXVolumeEventChannel: {fileID: 11400000, guid: 6e03cfde31b3d154a923ad88c9ff02c7, type: 2}
+  _musicVolumeEventChannel: {fileID: 11400000, guid: 6e79e1937f562b045a12aab5b1215389, type: 2}
+  _masterVolumeEventChannel: {fileID: 11400000, guid: 652b6653b3407fb488883815efa0bee0, type: 2}
+--- !u!4 &72951912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72951910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &136038383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53489,3 +53544,4 @@ SceneRoots:
   - {fileID: 1336828687}
   - {fileID: 206241329}
   - {fileID: 1559071116}
+  - {fileID: 72951912}
