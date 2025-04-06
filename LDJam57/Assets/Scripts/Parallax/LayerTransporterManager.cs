@@ -4,6 +4,7 @@ public class LayerTransporterManager : MonoBehaviour
 {
     public static LayerTransporterManager instance;
     private ParallaxManager parallaxManager => ParallaxManager.instance;
+    [SerializeField] private SO_PositionEventChannel transportFromPositionEventChannel;
     [SerializeField] private SO_PositionEventChannel transportToPositionEventChannel;
     [SerializeField] private SO_VoidEventChannel transportFinishedEventChannel;
 
@@ -21,6 +22,11 @@ public class LayerTransporterManager : MonoBehaviour
             Debug.LogWarning("Multiple instances of LayerTransporterManager detected. Destroying the duplicate instance.");
             Destroy(gameObject);
         }
+    }
+
+    public void TransportFromLayer(LayerTransporter fromTransporter)
+    {
+        transportFromPositionEventChannel.RaiseEvent(fromTransporter.transform.position);
     }
 
     public void TransportToLayer(LayerTransporter toTransporter)
@@ -45,13 +51,11 @@ public class LayerTransporterManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("Enabling LayerTransporterManager instance.");
         transportFinishedEventChannel.onEventRaised += EndTransport;
     }
 
     private void OnDisable()
     {
-        Debug.Log("Destroying LayerTransporterManager instance.");
         transportFinishedEventChannel.onEventRaised -= EndTransport;
     }
 }

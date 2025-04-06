@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LayerTransporter : MonoBehaviour
@@ -14,6 +15,8 @@ public class LayerTransporter : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color defaultColor = Color.black;
     [SerializeField] private Color highlightColor = Color.green;
+
+    [SerializeField] private SO_VoidEventChannel toStartTransportFinishedEventChannel;
 
     void Update()
     {
@@ -38,9 +41,16 @@ public class LayerTransporter : MonoBehaviour
     {
         if (!canTransport) return;
 
-        layerTransporterManager.TransportToLayer(connectedBlock);
+        layerTransporterManager.TransportFromLayer(this);
+
+        toStartTransportFinishedEventChannel.onEventRaised += TriggerToLayerTransport;
     }
 
+    public void TriggerToLayerTransport()
+    {
+        layerTransporterManager.TransportToLayer(connectedBlock);
+        toStartTransportFinishedEventChannel.onEventRaised -= TriggerToLayerTransport;
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         playerMovement = collision.GetComponent<PlayerMovement>();

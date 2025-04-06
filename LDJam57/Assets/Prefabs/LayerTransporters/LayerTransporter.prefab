@@ -139,6 +139,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7752232193276770649}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   highlightColor: {r: 0, g: 1, b: 0, a: 1}
+  toStartTransportFinishedEventChannel: {fileID: 11400000, guid: 8ede761f07a513445a134433c918a632, type: 2}
 --- !u!61 &5753019368208272370
 BoxCollider2D:
   m_ObjectHideFlags: 0
