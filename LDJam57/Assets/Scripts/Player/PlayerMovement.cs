@@ -13,9 +13,13 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerTransporter transporter;
 
+    private Animator animator;
+    [SerializeField] private Transform GfxTransform;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -32,6 +36,23 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
+        if (movementInput.x != 0)
+        {
+            animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
+
+        if (movementInput.x > 0)
+        {
+            GfxTransform.localScale = new Vector3(1, 1, 1); // Face right
+        }
+        else if (movementInput.x < 0)
+        {
+            GfxTransform.localScale = new Vector3(-1, 1, 1); // Face left
+        }
     }
 
     public void OnJump(InputValue value)

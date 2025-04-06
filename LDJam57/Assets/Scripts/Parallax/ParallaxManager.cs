@@ -4,7 +4,7 @@ using UnityEngine;
 public class ParallaxManager : MonoBehaviour
 {
     public static ParallaxManager instance;
-    private ParallaxState currentState = ParallaxState.MidGround;
+    public ParallaxState currentState = ParallaxState.MidGround;
     [SerializeField] private SO_ParallaxStateEventChannel parallaxStateEventChannel;
 
     [Header("Parallax Config")]
